@@ -251,6 +251,11 @@ select{appearance:none;-webkit-appearance:none;
 .out.pop{animation:unfurl .55s cubic-bezier(.2,.8,.3,1)}
 @keyframes unfurl{from{opacity:0;transform:translateY(-10px) scaleY(.88);transform-origin:top}
   to{opacity:1;transform:none}}
+.outlab{font-family:var(--caps);font-size:10px;font-weight:600;color:var(--gold);
+  letter-spacing:3px;margin:22px 4px 6px}
+.outlab em{font-family:var(--myeongjo);font-style:normal;font-weight:800;font-size:12px;
+  letter-spacing:1px;color:var(--gold-lt)}
+.out{margin-top:0}
 .hint{font-family:var(--myeongjo);font-size:12px;color:rgba(242,232,208,.55);
   margin:11px 4px 0;text-align:center;line-height:1.7}
 .hide{display:none}
@@ -332,10 +337,10 @@ footer{text-align:center;margin-top:24px;color:rgba(201,162,39,.55);
   <textarea id="memo" placeholder="예) 9/20은 지하철 사정으로 조금 늦을 수 있습니다"></textarea>
 </div>
 
+<div class="outlab">MY ANSWER · <em>내 응답 요약</em></div>
+<div id="out" class="out"></div>
 <button class="btn" id="submitBtn" onclick="submitForm()">제 출 하 기</button>
-<button class="btn sec" onclick="copyOut()">결과 복사하기 (수동 제출용)</button>
-<div id="out" class="out hide"></div>
-<p class="hint">제출이 안 되면 <b>결과 복사하기</b> 눌러 단톡방에 붙여넣어 주세요.<br>
+<p class="hint">위 요약을 확인하고 제출해 주세요.<br>
 같은 이름으로 다시 제출하면 최신 응답으로 덮어써집니다.</p>
 
 <footer>TEAM B · SEPTEMBER RUN</footer>
@@ -512,6 +517,29 @@ function submitForm(){
       make(true);
     });
 }
+
+function preview(){
+  const name=document.getElementById('name').value.trim();
+  const lines=[];
+  DATES.forEach(function(d){
+    const v=document.querySelector('input[name="'+d.id+'"]:checked');
+    if(!v){ lines.push(d.label+' · 미선택'); return; }
+    let long=d.label+' · '+v.value;
+    if(v.value==='참석') long += ' ('+fmt(d.start)+' 정시)';
+    if(v.value==='늦참'){ const t=picked[d.id];
+      long += t ? ' ('+fmt(t)+' 도착 · '+(mins(t)-mins(d.start))+'분 늦음)' : ' (도착시간 선택 전)'; }
+    lines.push(long);
+  });
+  const memo=document.getElementById('memo').value.trim();
+  let arr=['🎭 꿈펼 B팀 9월 드레스런 출결','— '+(name||'(배역·이름 선택 전)'),''].concat(lines);
+  if(memo) arr=arr.concat(['','비고: '+memo]);
+  document.getElementById('out').textContent=arr.join('\n');
+}
+document.addEventListener('change',function(){setTimeout(preview,30);});
+document.addEventListener('input',function(){setTimeout(preview,30);});
+document.addEventListener('click',function(){setTimeout(preview,160);setTimeout(preview,650);});
+preview();
+
 let tt;
 function toast(msg){
   const el=document.getElementById('toast');
