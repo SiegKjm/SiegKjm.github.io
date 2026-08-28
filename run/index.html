@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>꿈펼 전체 9월 드레스런 출결 조사</title>
+<meta name="description" content="꿈펼 전체 캐스트 9월 드레스런 참석 여부와 도착시간을 조사합니다.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="🎭 꿈펼 전체 캐스트 · 9월 드레스런 출결 조사">
+<meta property="og:description" content="9/6 · 9/13 · 9/20 · 9/27 · 9/28 참석 여부와 도착시간을 남겨주세요!">
+<meta property="og:url" content="https://siegkjm.github.io/run/">
+<meta property="og:site_name" content="꿈을 펼쳐요 · ALL CAST">
+<meta property="og:image" content="https://siegkjm.github.io/run/og.jpg">
+<meta property="og:image:secure_url" content="https://siegkjm.github.io/run/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://siegkjm.github.io/run/og.jpg">
+<meta name="theme-color" content="#A8221A">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎭</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;1,500;1,600&family=Cinzel:wght@500;600&family=Nanum+Myeongjo:wght@400;700;800&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F2E8D0;
+  --paper-lt:#FAF3E2;
+  --paper-dk:#E5D8B8;
+  --red:#A8221A;
+  --red-dk:#7C1611;
+  --red-lt:#C2372B;
+  --gold:#C9A227;
+  --gold-lt:#E8CE7E;
+  --gold-pale:#F3E3B0;
+  --mah:#3A241C;
+  --muted:#7B685C;
+  --didone:"Playfair Display","Nanum Myeongjo",serif;
+  --caps:"Cinzel",serif;
+  --myeongjo:"Nanum Myeongjo","Apple SD Gothic Neo",serif;
+  --pen:"Nanum Pen Script","Nanum Myeongjo",cursive;
+  --sans:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic","Noto Sans KR",sans-serif;
+  --damask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='72' height='108' viewBox='0 0 72 108'><g fill='none' stroke='%233A241C' stroke-opacity='0.075' stroke-width='1.1'><path d='M36 6c9 9 9 21 0 30-9-9-9-21 0-30z'/><path d='M36 36c9 9 9 21 0 30-9-9-9-21 0-30z'/><path d='M18 21c6 4 6 12 0 16-6-4-6-12 0-16z'/><path d='M54 21c-6 4-6 12 0 16 6-4 6-12 0-16z'/><path d='M0 75c9 9 9 21 0 30M72 75c-9 9-9 21 0 30'/><circle cx='36' cy='90' r='7'/><path d='M36 66v14M36 100v8'/></g></svg>");
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{
+  background:var(--mah);
+  background-image:
+    radial-gradient(900px 500px at 50% 0%, rgba(168,34,26,.35), transparent 62%),
+    var(--damask),
+    linear-gradient(175deg,#4A2E22 0%,#33201A 55%,#241511 100%);
+  background-attachment:fixed;
+  color:var(--mah);font-family:var(--sans);font-size:16px;line-height:1.6;
+  min-height:100vh;overflow-x:hidden;
+}
+
+/* ══ gold foil dust ══ */
+.dust{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.dust i{position:absolute;display:block;border-radius:50%;background:var(--gold-lt);
+  opacity:0;filter:blur(.3px);animation:rise linear infinite}
+@keyframes rise{
+  0%{transform:translateY(0) scale(.5);opacity:0}
+  14%{opacity:.6} 86%{opacity:.2}
+  100%{transform:translateY(-115vh) scale(1.1);opacity:0}
+}
+
+/* ════════ INTRO ════════ */
+#intro{position:fixed;inset:0;z-index:100;display:flex;align-items:center;justify-content:center;
+  background:var(--paper);background-image:var(--damask);overflow:hidden}
+#intro.done{animation:introOut .85s cubic-bezier(.5,0,.75,0) forwards}
+@keyframes introOut{to{opacity:0;visibility:hidden;transform:scale(1.14)}}
+#intro::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(circle at 50% 45%,transparent 40%,rgba(58,36,28,.14) 100%)}
+
+.arch{position:relative;width:250px;height:330px;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:4px;
+  background:linear-gradient(165deg,var(--red-lt),var(--red) 45%,var(--red-dk));
+  border-radius:125px 125px 10px 10px;
+  box-shadow:0 30px 70px rgba(58,36,28,.5), inset 0 0 70px rgba(58,20,15,.45);
+  animation:archIn 1s cubic-bezier(.2,.9,.25,1) both}
+@keyframes archIn{from{opacity:0;transform:translateY(30px) scaleY(.72)}to{opacity:1;transform:none}}
+.arch::before{content:"";position:absolute;inset:9px;border:1.2px solid rgba(233,206,126,.55);
+  border-radius:117px 117px 6px 6px;pointer-events:none}
+.arch::after{content:"";position:absolute;inset:16px;border-radius:112px 112px 4px 4px;
+  background:repeating-linear-gradient(0deg,rgba(255,225,205,.09) 0 1px,transparent 1px 7px);
+  opacity:.5;pointer-events:none}
+
+.quillbox{width:150px;height:96px;position:relative;z-index:2}
+.quillbox path{fill:none;stroke:var(--gold-lt);stroke-width:2.1;
+  stroke-linecap:round;stroke-linejoin:round;
+  stroke-dasharray:var(--L);stroke-dashoffset:var(--L);
+  animation:draw 1.15s cubic-bezier(.55,.1,.35,1) .35s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+
+.ititle{position:relative;z-index:2;display:inline-block;font-family:var(--myeongjo);font-weight:800;
+  font-size:35px;letter-spacing:4px;text-indent:4px;margin-top:6px;color:var(--gold-pale);
+  text-shadow:0 2px 16px rgba(58,20,15,.7), 0 0 30px rgba(201,162,39,.35);
+  opacity:0;animation:fadeUpSkew .8s ease 1.15s both}
+.ikr{position:relative;z-index:2;font-family:var(--myeongjo);font-weight:800;font-size:15px;
+  letter-spacing:9px;text-indent:9px;color:rgba(243,227,176,.82);
+  opacity:0;animation:fadeUp .8s ease 1.35s both}
+@keyframes fadeUp{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:none}}
+@keyframes fadeUpSkew{from{opacity:0;transform:translateY(9px) skewX(-12deg)}to{opacity:1;transform:skewX(-12deg)}}
+
+.isheen{position:absolute;top:0;left:-40%;width:32%;height:100%;z-index:3;pointer-events:none;
+  background:linear-gradient(100deg,transparent,rgba(255,246,214,.5),transparent);
+  transform:skewX(-16deg);opacity:0;animation:swipe 1s ease 1.5s both}
+@keyframes swipe{0%{left:-40%;opacity:0}20%{opacity:1}100%{left:140%;opacity:0}}
+
+/* ════════ PAGE ════════ */
+.wrap{position:relative;z-index:1;max-width:560px;margin:0 auto;padding:16px 13px 54px;opacity:0}
+.wrap.show{animation:wrapIn .75s ease .1s both}
+@keyframes wrapIn{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+
+header{position:relative;text-align:center;padding:34px 20px 26px;margin-bottom:20px;
+  background-image:var(--damask),linear-gradient(165deg,var(--red-lt),var(--red) 42%,var(--red-dk));
+  border-radius:120px 120px 14px 14px;
+  box-shadow:0 22px 50px rgba(20,10,8,.55), inset 0 0 70px rgba(58,20,15,.4);
+  overflow:hidden}
+header::before{content:"";position:absolute;inset:8px;border:1.1px solid rgba(233,206,126,.45);
+  border-radius:113px 113px 8px 8px;pointer-events:none}
+header::after{content:"";position:absolute;top:0;left:-55%;width:38%;height:100%;pointer-events:none;
+  background:linear-gradient(100deg,transparent,rgba(255,246,214,.24),transparent);
+  transform:skewX(-16deg);animation:sheen 6.5s ease-in-out 1.4s infinite}
+@keyframes sheen{0%{left:-55%}26%{left:145%}100%{left:145%}}
+.mus{position:relative;font-family:var(--caps);font-size:10px;letter-spacing:6px;text-indent:6px;
+  color:rgba(233,206,126,.8);margin-bottom:2px}
+.logo{position:relative;display:inline-block;font-family:var(--myeongjo);font-weight:800;font-size:34px;letter-spacing:4px;text-indent:4px;transform:skewX(-12deg);
+  line-height:1.05;color:var(--gold-pale);
+  text-shadow:0 2px 14px rgba(40,12,10,.6), 0 0 26px rgba(201,162,39,.28)}
+.flourish{position:relative;display:block;width:170px;height:20px;margin:2px auto 6px}
+.flourish path{fill:none;stroke:var(--gold);stroke-width:1.6;stroke-linecap:round;
+  stroke-dasharray:300;stroke-dashoffset:300;animation:draw 1.2s ease .5s forwards}
+.hkr{position:relative;font-family:var(--myeongjo);font-weight:800;font-size:13px;
+  letter-spacing:7px;text-indent:7px;color:rgba(243,227,176,.7)}
+.tag{position:relative;font-family:var(--pen);font-size:23px;color:var(--gold-lt);
+  margin:10px 0 6px;transform:rotate(-1.2deg)}
+.rule{position:relative;display:flex;align-items:center;justify-content:center;gap:9px;margin:8px 0 11px}
+.rule i{height:1px;width:50px;background:linear-gradient(90deg,transparent,var(--gold))}
+.rule i:last-child{background:linear-gradient(270deg,transparent,var(--gold))}
+.rule b{font-family:var(--myeongjo);color:var(--gold-lt);font-size:12px;letter-spacing:3px}
+header p{position:relative;margin:0;font-size:13px;color:rgba(255,240,222,.9);line-height:1.75;
+  font-family:var(--myeongjo)}
+header p b{color:var(--gold-pale)}
+
+.card{position:relative;background:linear-gradient(180deg,var(--paper-lt),var(--paper));
+  border:1px solid var(--paper-dk);border-radius:6px;padding:17px 16px;margin-bottom:12px;
+  box-shadow:0 12px 26px rgba(20,10,8,.35);
+  opacity:0;animation:cardIn .6s cubic-bezier(.2,.75,.3,1) both}
+@keyframes cardIn{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.card::before{content:"";position:absolute;inset:0;border-radius:6px;pointer-events:none;
+  background:repeating-linear-gradient(0deg,rgba(58,36,28,.035) 0 1px,transparent 1px 9px);
+  opacity:.7}
+.cnr{position:absolute;width:13px;height:13px;border:1.3px solid var(--gold);opacity:.75}
+.cnr.tl{top:5px;left:5px;border-right:0;border-bottom:0;border-radius:4px 0 0 0}
+.cnr.tr{top:5px;right:5px;border-left:0;border-bottom:0;border-radius:0 4px 0 0}
+.cnr.bl{bottom:5px;left:5px;border-right:0;border-top:0;border-radius:0 0 0 4px}
+.cnr.br{bottom:5px;right:5px;border-left:0;border-top:0;border-radius:0 0 4px 0}
+
+label.f{position:relative;display:block;font-family:var(--caps);font-size:10px;font-weight:600;
+  color:var(--red);letter-spacing:3px;margin-bottom:9px}
+label.f em{font-family:var(--myeongjo);font-style:normal;font-weight:800;font-size:12px;letter-spacing:1px}
+select,input[type=time],textarea{
+  position:relative;width:100%;padding:13px;border:1px solid var(--paper-dk);border-radius:4px;
+  font-size:16px;font-family:var(--myeongjo);font-weight:700;background:#FFFCF2;color:var(--mah);
+  transition:.2s}
+select:focus,input:focus,textarea:focus{outline:0;border-color:var(--gold);
+  box-shadow:0 0 0 3px rgba(201,162,39,.28)}
+textarea{font-weight:400;resize:vertical;min-height:62px}
+select{appearance:none;-webkit-appearance:none;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8'><path d='M1 1l5 5 5-5' stroke='%23A8221A' stroke-width='2' fill='none' stroke-linecap='round'/></svg>");
+  background-repeat:no-repeat;background-position:right 14px center}
+
+.dh{position:relative;display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:13px}
+.seal{width:30px;height:30px;flex:none;border-radius:50%;
+  background:radial-gradient(circle at 35% 30%,var(--red-lt),var(--red-dk));
+  color:var(--gold-pale);display:flex;align-items:center;justify-content:center;
+  font-family:var(--caps);font-size:13px;font-weight:600;
+  box-shadow:0 3px 8px rgba(124,22,17,.4), inset 0 1px 2px rgba(255,220,200,.3)}
+.dh .d{font-family:var(--myeongjo);font-size:18px;font-weight:800}
+.chip{font-size:10.5px;font-weight:800;padding:4px 9px;border-radius:3px;
+  font-family:var(--myeongjo);background:rgba(58,36,28,.06);color:var(--mah);
+  border:1px solid rgba(58,36,28,.18)}
+.chip.t{font-variant-numeric:tabular-nums}
+.chip.g{background:rgba(201,162,39,.18);color:#8A6A0E;border-color:rgba(201,162,39,.6)}
+
+.seg{position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:7px}
+.seg input{position:absolute;opacity:0;pointer-events:none}
+.seg label{display:block;text-align:center;padding:13px 4px;border:1px solid var(--paper-dk);
+  border-radius:4px;font-family:var(--myeongjo);font-size:15px;font-weight:800;color:var(--muted);
+  cursor:pointer;background:#FFFCF2;transition:.2s cubic-bezier(.2,.8,.3,1)}
+.seg label:active{transform:scale(.96)}
+.seg input:checked + label{border-color:transparent;transform:translateY(-2px);
+  animation:stamp .4s cubic-bezier(.3,1.5,.5,1)}
+@keyframes stamp{0%{transform:scale(1.16) translateY(-2px) rotate(-2deg)}
+  55%{transform:scale(.97) translateY(-2px) rotate(.6deg)}100%{transform:translateY(-2px)}}
+.seg input.y:checked + label{background:linear-gradient(165deg,var(--red-lt),var(--red-dk));
+  color:var(--gold-pale);box-shadow:0 7px 16px rgba(124,22,17,.4)}
+.seg input.m:checked + label{background:linear-gradient(165deg,#DDBB4A,var(--gold));
+  color:var(--mah);box-shadow:0 7px 16px rgba(201,162,39,.4)}
+.seg input.n:checked + label{background:linear-gradient(165deg,#8A7668,#5E4C41);
+  color:var(--paper);box-shadow:0 7px 16px rgba(58,36,28,.35)}
+
+.tw{position:relative;max-height:0;opacity:0;overflow:hidden;
+  transition:max-height .4s ease,opacity .3s ease,margin-top .3s}
+.tw.on{max-height:250px;opacity:1;margin-top:14px}
+.tw .lab{display:flex;align-items:center;gap:7px;font-family:var(--myeongjo);font-size:12.5px;
+  font-weight:800;color:var(--red);margin-bottom:9px;
+  padding-top:13px;border-top:1px dashed var(--paper-dk)}
+.tw .lab u{margin-left:auto;text-decoration:none;font-variant-numeric:tabular-nums;
+  background:var(--red);color:var(--gold-pale);padding:4px 11px;border-radius:3px;font-size:12.5px}
+.slots{display:flex;gap:7px;overflow-x:auto;padding:3px 2px 9px;scroll-snap-type:x proximity;
+  -webkit-overflow-scrolling:touch}
+.slots::-webkit-scrollbar{height:4px}
+.slots::-webkit-scrollbar-thumb{background:rgba(201,162,39,.5);border-radius:4px}
+.slot{flex:none;scroll-snap-align:center;min-width:68px;padding:12px 13px;border-radius:999px;
+  border:1.2px solid rgba(201,162,39,.65);background:#FFFCF2;color:var(--mah);
+  font-family:var(--myeongjo);font-weight:800;font-size:14.5px;font-variant-numeric:tabular-nums;
+  cursor:pointer;transition:.18s;white-space:nowrap}
+.slot:active{transform:scale(.93)}
+.slot.on{background:linear-gradient(165deg,var(--red-lt),var(--red-dk));color:var(--gold-pale);
+  border-color:transparent;box-shadow:0 5px 13px rgba(124,22,17,.4)}
+.slot.other{border-style:dashed;color:var(--muted);font-size:13px}
+.custom{display:none;margin-top:2px}
+.custom.on{display:block}
+
+.allrow{display:flex;gap:7px}
+.allrow button{flex:1;padding:11px 2px;border:1px solid var(--paper-dk);background:#FFFCF2;
+  border-radius:4px;font-family:var(--myeongjo);font-size:13px;font-weight:800;color:var(--muted);
+  cursor:pointer;transition:.2s}
+.allrow button:active{transform:scale(.95);background:var(--paper)}
+
+.btn{position:relative;display:block;width:100%;padding:17px;border-radius:6px;cursor:pointer;
+  font-family:var(--myeongjo);font-size:17px;font-weight:800;letter-spacing:2px;
+  color:var(--gold-pale);background:linear-gradient(165deg,var(--red-lt),var(--red-dk));
+  border:1px solid rgba(233,206,126,.55);box-shadow:0 14px 30px rgba(20,10,8,.45);
+  margin-top:9px;overflow:hidden;transition:.2s}
+.btn:active{transform:translateY(2px);box-shadow:0 7px 16px rgba(20,10,8,.45)}
+.btn::after{content:"";position:absolute;top:0;left:-55%;width:34%;height:100%;pointer-events:none;
+  background:linear-gradient(100deg,transparent,rgba(255,246,214,.32),transparent);
+  transform:skewX(-16deg);animation:sheen 5s ease-in-out infinite}
+.btn.sec{background:rgba(242,232,208,.08);color:var(--gold-lt);font-size:14.5px;padding:14px}
+.btn[disabled]{opacity:.75}
+
+.out{position:relative;white-space:pre-wrap;background:linear-gradient(180deg,var(--paper-lt),var(--paper));
+  color:var(--mah);border:1px solid var(--gold);border-radius:5px;padding:19px 17px;
+  font-family:var(--myeongjo);font-size:14.5px;line-height:1.8;margin-top:14px;word-break:break-all;
+  box-shadow:0 16px 34px rgba(20,10,8,.4)}
+.out.pop{animation:unfurl .55s cubic-bezier(.2,.8,.3,1)}
+@keyframes unfurl{from{opacity:0;transform:translateY(-10px) scaleY(.88);transform-origin:top}
+  to{opacity:1;transform:none}}
+.outlab{font-family:var(--caps);font-size:10px;font-weight:600;color:var(--gold);
+  letter-spacing:3px;margin:22px 4px 6px}
+.outlab em{font-family:var(--myeongjo);font-style:normal;font-weight:800;font-size:12px;
+  letter-spacing:1px;color:var(--gold-lt)}
+.out{margin-top:0}
+.hint{font-family:var(--myeongjo);font-size:12px;color:rgba(242,232,208,.55);
+  margin:11px 4px 0;text-align:center;line-height:1.7}
+.hide{display:none}
+
+.toast{position:fixed;left:50%;bottom:26px;transform:translate(-50%,26px);z-index:200;
+  background:linear-gradient(165deg,var(--red-lt),var(--red-dk));color:var(--gold-pale);
+  border:1px solid rgba(233,206,126,.6);border-radius:4px;padding:13px 22px;
+  font-family:var(--myeongjo);font-weight:800;font-size:14.5px;max-width:88vw;text-align:center;
+  box-shadow:0 18px 40px rgba(20,10,8,.6);opacity:0;pointer-events:none;
+  transition:.35s cubic-bezier(.2,.8,.3,1)}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+
+footer{text-align:center;margin-top:24px;color:rgba(201,162,39,.55);
+  font-family:var(--caps);font-size:9.5px;letter-spacing:4px}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+</style>
+</head>
+<body>
+
+<div class="dust" id="dust"></div>
+
+<div id="intro">
+  <div class="arch">
+    <svg class="quillbox" viewBox="0 0 150 96" aria-hidden="true">
+      <path style="--L:250" d="M118 12C96 20 70 40 55 62c-4 6-7 12-9 18"/>
+      <path style="--L:240" d="M118 12c4 16-2 34-14 46-10 10-24 17-38 20 2-14 8-28 18-40 9-11 21-21 34-26z"/>
+      <path style="--L:120" d="M104 26c-10 6-19 14-26 24M112 38c-9 8-19 15-30 20"/>
+      <path style="--L:150" d="M46 80c-8 3-17 4-26 3 5-7 12-12 20-15"/>
+      <path style="--L:170" d="M8 92c26 3 52 1 76-6"/>
+    </svg>
+    <div class="ititle">꿈을 펼쳐요</div>
+  </div>
+  <div class="isheen"></div>
+</div>
+
+<div class="wrap" id="wrap">
+
+<header>
+  <div class="mus">MUSICAL</div>
+  <div class="logo">꿈을 펼쳐요</div>
+  <svg class="flourish" viewBox="0 0 170 20" aria-hidden="true">
+    <path d="M6 12c22 0 30-7 46-7s22 9 33 9 20-9 34-9 30 5 45 4"/>
+    <path d="M118 8c6-3 13-4 20-3"/>
+  </svg>
+  <div class="rule"><i></i><b>전체 캐스트 · 9월 드레스런</b><i></i></div>
+  <p>연습시간 <b>14:00 ~ 22:00</b> (9/28은 19:00~22:00)<br>
+  날짜별로 <b>참석 · 늦참 · 불참</b>을 골라주세요.<br>
+  늦참이면 도착시간만 톡 눌러주시면 됩니다.</p>
+</header>
+
+<div class="card" style="animation-delay:.05s">
+  <span class="cnr tl"></span><span class="cnr tr"></span><span class="cnr bl"></span><span class="cnr br"></span>
+  <label class="f">CAST · <em>배역 · 이름</em></label>
+  <select id="name">
+    <option value="">— 본인을 선택해 주세요 —</option>
+    <optgroup label="안나">
+      <option value="안나 홍수빈">안나 · 홍수빈</option>
+      <option value="안나 최하현">안나 · 최하현</option>
+    </optgroup>
+    <optgroup label="브라운">
+      <option value="브라운 이교현">브라운 · 이교현</option>
+      <option value="브라운 김종무">브라운 · 김종무</option>
+    </optgroup>
+    <optgroup label="로렐라이">
+      <option value="로렐라이 김예한">로렐라이 · 김예한</option>
+      <option value="로렐라이 박영진">로렐라이 · 박영진</option>
+    </optgroup>
+    <optgroup label="도로시">
+      <option value="도로시 안다혜">도로시 · 안다혜</option>
+    </optgroup>
+    <optgroup label="존슨 &amp; 앤디">
+      <option value="존슨&앤디 최준영">존슨 & 앤디 · 최준영</option>
+      <option value="존슨&앤디 김현정">존슨 & 앤디 · 김현정</option>
+    </optgroup>
+    <optgroup label="헨리 &amp; 잭">
+      <option value="헨리&잭 홍윤석">헨리 & 잭 · 홍윤석</option>
+    </optgroup>
+    <optgroup label="줄리아 외">
+      <option value="줄리아외 홍은비">줄리아 외 · 홍은비</option>
+    </optgroup>
+    <optgroup label="코렐 외">
+      <option value="코렐외 김보람">코렐 외 · 김보람</option>
+    </optgroup>
+    <optgroup label="메리 외">
+      <option value="메리외 송현주">메리 외 · 송현주</option>
+    </optgroup>
+    <optgroup label="판사 외">
+      <option value="판사외 전준범">판사 외 · 전준범</option>
+    </optgroup>
+    <optgroup label="검사 외">
+      <option value="검사외 한결">검사 외 · 한결</option>
+    </optgroup>
+    <optgroup label="경찰 외">
+      <option value="경찰외 이재윤">경찰 외 · 이재윤</option>
+    </optgroup>
+    <optgroup label="바이올렛 외">
+      <option value="바이올렛외 허해린">바이올렛 외 · 허해린</option>
+    </optgroup>
+  </select>
+</div>
+
+<div class="card" style="animation-delay:.1s">
+  <span class="cnr tl"></span><span class="cnr tr"></span><span class="cnr bl"></span><span class="cnr br"></span>
+  <label class="f">QUICK · <em>한 번에 표시</em></label>
+  <div class="allrow">
+    <button type="button" onclick="setAll('y')">전부 참석</button>
+    <button type="button" onclick="setAll('n')">전부 불참</button>
+  </div>
+</div>
+
+<div id="dates"></div>
+
+<div class="card" id="memocard">
+  <span class="cnr tl"></span><span class="cnr tr"></span><span class="cnr bl"></span><span class="cnr br"></span>
+  <label class="f">NOTE · <em>전달 사항 (선택)</em></label>
+  <textarea id="memo" placeholder="예) 9/20은 지하철 사정으로 조금 늦을 수 있습니다"></textarea>
+</div>
+
+<div class="outlab">MY ANSWER · <em>내 응답 요약</em></div>
+<div id="out" class="out"></div>
+<button class="btn" id="submitBtn" onclick="submitForm()">제 출 하 기</button>
+<p class="hint">위 요약을 확인하고 제출해 주세요.<br>
+같은 이름으로 다시 제출하면 최신 응답으로 덮어써집니다.</p>
+
+<footer>ALL CAST · SEPTEMBER RUN</footer>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+const ENDPOINT = "https://script.google.com/macros/s/AKfycby5zRFuJESKQabw1CGG6gY1LX7I3J87vUb3jsng4zW0gh34LOHJuLVlCPQ0_PP3MUBIeA/exec";
+
+(function(){
+  const d=document.getElementById('dust');
+  for(let i=0;i<28;i++){
+    const s=document.createElement('i'), sc=.6+Math.random()*1.7;
+    s.style.left=Math.random()*100+'%'; s.style.bottom='-10px';
+    s.style.width=s.style.height=(2.6*sc).toFixed(1)+'px';
+    s.style.animationDuration=(12+Math.random()*13)+'s';
+    s.style.animationDelay=(Math.random()*15)+'s';
+    d.appendChild(s);
+  }
+})();
+
+setTimeout(()=>{
+  document.getElementById('intro').classList.add('done');
+  document.getElementById('wrap').classList.add('show');
+  setTimeout(()=>{const el=document.getElementById('intro'); if(el) el.remove();},950);
+}, 2750);
+
+const DATES = [
+  {id:"d0906", label:"9/6 (일)",  time:"14:00~22:00", start:"14:00", note:"승현 오퍼", warn:false},
+  {id:"d0913", label:"9/13 (일)", time:"14:00~22:00", start:"14:00", note:"", warn:false},
+  {id:"d0920", label:"9/20 (일)", time:"14:00~22:00", start:"14:00", note:"", warn:false},
+  {id:"d0927", label:"9/27 (일)", time:"14:00~22:00", start:"14:00", note:"A·B팀 합동 런 · 승현 오퍼", warn:true},
+  {id:"d0928", label:"9/28 (월)", time:"19:00~22:00", start:"19:00", note:"승현 오퍼", warn:true}
+];
+const END="22:00";
+const mins = t => { const p=t.split(':').map(Number); return p[0]*60+p[1]; };
+const hhmm = v => String(Math.floor(v/60)).padStart(2,'0')+':'+String(v%60).padStart(2,'0');
+function fmt(t){ const p=t.split(':').map(Number);
+  return (p[0]<12?'오전':'오후')+' '+(p[0]%12===0?12:p[0]%12)+':'+String(p[1]).padStart(2,'0'); }
+function slotsFor(d){
+  const out=[]; for(let v=mins(d.start)+30; v<=mins(END)-30; v+=30) out.push(hhmm(v));
+  return out;
+}
+
+document.getElementById('dates').innerHTML = DATES.map(function(d,i){ return ''+
+  '<div class="card" style="animation-delay:'+(.15 + i*.07)+'s">'+
+    '<span class="cnr tl"></span><span class="cnr tr"></span><span class="cnr bl"></span><span class="cnr br"></span>'+
+    '<div class="dh">'+
+      '<span class="seal">'+['I','II','III','IV','V'][i]+'</span>'+
+      '<span class="d">'+d.label+'</span>'+
+      '<span class="chip t">'+d.time+'</span>'+
+      (d.note ? '<span class="chip '+(d.warn?'g':'')+'">'+d.note+'</span>' : '')+
+    '</div>'+
+    '<div class="seg">'+
+      '<input type="radio" class="y" name="'+d.id+'" id="'+d.id+'_y" value="참석" onchange="toggle(\''+d.id+'\')">'+
+      '<label for="'+d.id+'_y">참석</label>'+
+      '<input type="radio" class="m" name="'+d.id+'" id="'+d.id+'_m" value="늦참" onchange="toggle(\''+d.id+'\')">'+
+      '<label for="'+d.id+'_m">늦참</label>'+
+      '<input type="radio" class="n" name="'+d.id+'" id="'+d.id+'_n" value="불참" onchange="toggle(\''+d.id+'\')">'+
+      '<label for="'+d.id+'_n">불참</label>'+
+    '</div>'+
+    '<div class="tw" id="'+d.id+'_t">'+
+      '<div class="lab">도착 예정 시간 <u id="'+d.id+'_show">선택해 주세요</u></div>'+
+      '<div class="slots">'+
+        slotsFor(d).map(function(t){ return '<button type="button" class="slot" data-t="'+t+'" onclick="pick(\''+d.id+'\',\''+t+'\',this)">'+t+'</button>'; }).join('')+
+        '<button type="button" class="slot other" onclick="openCustom(\''+d.id+'\')">직접 입력</button>'+
+      '</div>'+
+      '<div class="custom" id="'+d.id+'_custom">'+
+        '<input type="time" id="'+d.id+'_time" step="300" onchange="pick(\''+d.id+'\',this.value,null)">'+
+      '</div>'+
+    '</div>'+
+  '</div>';
+}).join('');
+document.getElementById('memocard').style.animationDelay = (.15 + DATES.length*.07) + 's';
+DATES.forEach(function(d){ document.getElementById(d.id+'_y').checked = true; });
+
+const picked = {};
+function toggle(id){
+  const v = document.querySelector('input[name="'+id+'"]:checked');
+  const on = !!v && v.value === '늦참';
+  const w = document.getElementById(id+'_t');
+  w.classList.toggle('on', on);
+  if(on) setTimeout(function(){ w.scrollIntoView({behavior:'smooth',block:'center'}); }, 230);
+}
+function pick(id,t,el){
+  if(!t) return;
+  picked[id]=t;
+  const w=document.getElementById(id+'_t');
+  const list=w.querySelectorAll('.slot');
+  for(let i=0;i<list.length;i++) list[i].classList.toggle('on', list[i].dataset.t===t);
+  document.getElementById(id+'_show').textContent = fmt(t);
+  if(el) el.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});
+}
+function openCustom(id){
+  const c=document.getElementById(id+'_custom');
+  c.classList.add('on');
+  const inp=document.getElementById(id+'_time');
+  let d=null; for(let i=0;i<DATES.length;i++) if(DATES[i].id===id) d=DATES[i];
+  inp.value = picked[id] || d.start;
+  setTimeout(function(){ try{ inp.showPicker ? inp.showPicker() : inp.focus(); }catch(e){ inp.focus(); } },60);
+}
+function setAll(kind){
+  DATES.forEach(function(d,i){ setTimeout(function(){
+    document.getElementById(d.id+'_'+kind).checked = true; toggle(d.id);
+  }, i*80); });
+}
+
+function rows(){
+  const name=document.getElementById('name').value.trim();
+  if(!name){ toast('배역·이름을 선택해 주세요'); document.getElementById('name').focus(); return null; }
+  const miss=[], data={name:name, memo:document.getElementById('memo').value.trim()}, lines=[];
+  DATES.forEach(function(d){
+    const v=document.querySelector('input[name="'+d.id+'"]:checked');
+    if(!v){ miss.push(d.label); data[d.id]=''; lines.push(d.label+' · 미응답'); return; }
+    let short=v.value, long=d.label+' · '+v.value;
+    if(v.value==='참석'){ long += ' ('+fmt(d.start)+' 정시)'; }
+    if(v.value==='늦참'){
+      const t=picked[d.id];
+      if(t){ short+=' '+t; long += ' ('+fmt(t)+' 도착 · '+(mins(t)-mins(d.start))+'분 늦음)'; }
+      else { miss.push(d.label+' 도착시간'); long += ' (도착시간 미기재)'; }
+    }
+    data[d.id]=short; lines.push(long);
+  });
+  return {name:name, data:data, lines:lines, miss:miss};
+}
+function make(force){
+  const r=rows(); if(!r) return null;
+  if(r.miss.length && !force){ toast(r.miss.join(', ')+' 아직 안 골랐어요'); return null; }
+  let arr=['🎭 꿈펼 9월 드레스런 출결','— '+r.name,''].concat(r.lines);
+  if(r.data.memo) arr=arr.concat(['','비고: '+r.data.memo]);
+  const text=arr.join('\n');
+  const out=document.getElementById('out');
+  out.textContent=text; out.classList.remove('hide','pop');
+  void out.offsetWidth; out.classList.add('pop');
+  out.scrollIntoView({behavior:'smooth',block:'center'});
+  return text;
+}
+function copyOut(){
+  const out=document.getElementById('out');
+  const text = out.classList.contains('hide') ? make(true) : out.textContent;
+  if(!text) return;
+  const done=function(){ toast('복사 완료! 단톡방에 붙여넣어 주세요'); };
+  if(navigator.clipboard && window.isSecureContext){
+    navigator.clipboard.writeText(text).then(done).catch(fb);
+  } else fb();
+  function fb(){
+    const ta=document.createElement('textarea');
+    ta.value=text; ta.style.position='fixed'; ta.style.opacity='0';
+    document.body.appendChild(ta); ta.select();
+    try{ document.execCommand('copy'); done(); }
+    catch(e){ toast('결과를 길게 눌러 복사해 주세요'); }
+    document.body.removeChild(ta);
+  }
+}
+function submitForm(){
+  const r=rows(); if(!r) return;
+  if(r.miss.length){ toast(r.miss.join(', ')+' 아직 안 골랐어요'); return; }
+  const btn=document.getElementById('submitBtn');
+  btn.disabled=true; btn.textContent='제출 중...';
+  fetch(ENDPOINT,{method:'POST',body:new URLSearchParams(r.data)})
+    .then(function(res){ return res.json(); })
+    .then(function(j){
+      if(!j || !j.ok) throw new Error('server');
+      btn.textContent='✓ 제출 완료';
+      btn.style.background='linear-gradient(165deg,#DDBB4A,#C9A227)';
+      btn.style.color='#3A241C';
+      toast('제출 완료! 고맙습니다 📕');
+      make(true);
+    })
+    .catch(function(){
+      btn.disabled=false; btn.textContent='제 출 하 기';
+      toast('제출 실패 — 결과 복사해서 단톡방에 올려주세요');
+      make(true);
+    });
+}
+
+function preview(){
+  const name=document.getElementById('name').value.trim();
+  const lines=[];
+  DATES.forEach(function(d){
+    const v=document.querySelector('input[name="'+d.id+'"]:checked');
+    if(!v){ lines.push(d.label+' · 미선택'); return; }
+    let long=d.label+' · '+v.value;
+    if(v.value==='참석') long += ' ('+fmt(d.start)+' 정시)';
+    if(v.value==='늦참'){ const t=picked[d.id];
+      long += t ? ' ('+fmt(t)+' 도착 · '+(mins(t)-mins(d.start))+'분 늦음)' : ' (도착시간 선택 전)'; }
+    lines.push(long);
+  });
+  const memo=document.getElementById('memo').value.trim();
+  let arr=['🎭 꿈펼 9월 드레스런 출결','— '+(name||'(배역·이름 선택 전)'),''].concat(lines);
+  if(memo) arr=arr.concat(['','비고: '+memo]);
+  document.getElementById('out').textContent=arr.join('\n');
+}
+document.addEventListener('change',function(){setTimeout(preview,30);});
+document.addEventListener('input',function(){setTimeout(preview,30);});
+document.addEventListener('click',function(){setTimeout(preview,160);setTimeout(preview,650);});
+preview();
+
+let tt;
+function toast(msg){
+  const el=document.getElementById('toast');
+  el.textContent=msg; el.classList.add('on');
+  clearTimeout(tt); tt=setTimeout(function(){ el.classList.remove('on'); },2600);
+}
+</script>
+</body>
+</html>
