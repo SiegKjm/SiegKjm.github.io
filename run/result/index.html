@@ -14,7 +14,7 @@
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;padding:0}
 body{background:#2A1A18;background-image:radial-gradient(900px 500px at 50% 0%,rgba(168,34,26,.32),transparent 62%),linear-gradient(175deg,#4A2E22,#33201A 55%,#241511);background-attachment:fixed;color:var(--mah);font-family:var(--mj);font-size:16px;line-height:1.6;min-height:100vh}
-.wrap{max-width:720px;margin:0 auto;padding:18px 13px 60px}
+.wrap{max-width:720px;margin:0 auto;padding:18px 13px 104px}
 header{position:relative;text-align:center;padding:26px 18px 22px;margin-bottom:16px;border-radius:100px 100px 12px 12px;background:linear-gradient(165deg,var(--red-lt),var(--red) 42%,var(--red-dk));box-shadow:0 20px 46px rgba(20,10,8,.5),inset 0 0 60px rgba(58,20,15,.4);overflow:hidden}
 header::before{content:"";position:absolute;inset:8px;border:1px solid rgba(233,206,126,.45);border-radius:94px 94px 7px 7px}
 .mus{font-family:var(--caps);font-size:9.5px;letter-spacing:6px;color:rgba(233,206,126,.8)}
@@ -76,11 +76,15 @@ td.hm{position:relative}
 .chip.hm{animation:memoRing 2.4s ease-in-out infinite}
 .hm.on::before{animation:none;opacity:1}
 body.tapped .hm::before,body.tapped .chip.hm{animation:none}
-.backbtn{display:block;text-align:center;text-decoration:none;margin:0 2px 14px;padding:14px;
-  border-radius:6px;background:rgba(242,232,208,.08);border:1px solid rgba(233,206,126,.5);
-  color:var(--gold-lt);font-family:var(--mj);font-weight:800;font-size:14.5px;letter-spacing:1px;
-  box-shadow:0 10px 24px rgba(20,10,8,.35);transition:.2s}
-.backbtn:active{transform:translateY(2px)}
+.backbtn{position:fixed;right:16px;bottom:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));
+  z-index:500;display:inline-flex;align-items:center;gap:7px;text-decoration:none;
+  padding:14px 19px;border-radius:999px;background:linear-gradient(165deg,#C2372B,#7C1611);
+  border:1px solid rgba(233,206,126,.6);color:var(--gold-pale);font-family:var(--mj);
+  font-weight:800;font-size:14px;letter-spacing:.5px;white-space:nowrap;
+  box-shadow:0 14px 30px rgba(0,0,0,.55);transition:.2s}
+.backbtn i{font-style:normal;font-size:16px;line-height:1}
+.backbtn:hover{filter:brightness(1.08)}
+.backbtn:active{transform:translateY(2px);box-shadow:0 7px 16px rgba(0,0,0,.5)}
 .tiphint{display:flex;align-items:center;gap:7px;margin:0 2px 14px;padding:10px 13px;border-radius:6px;
   background:rgba(201,162,39,.13);border:1px dashed rgba(201,162,39,.5);color:var(--gold-lt);
   font-size:12.5px;font-weight:700;line-height:1.5}
@@ -111,10 +115,10 @@ footer{text-align:center;margin-top:26px;color:rgba(201,162,39,.5);font-family:v
 <button class="rf" onclick="load()">새로고침</button>
 </div>
 <div class="tiphint"><i>💬</i><span>표시가 있으면 남긴 메모가 있어요 — <b>누르거나 마우스를 올려</b> 보세요</span></div>
-<a class="backbtn" href="/run/">✏️ 투표 화면으로 — 내 응답 수정하기</a>
 <div id="body"></div>
 <footer>ALL CAST · SEPTEMBER RUN</footer>
 </div>
+<a class="backbtn" href="/run/"><i>✏️</i>응답 수정</a>
 <div id="tip" class="tip"></div>
 <script>
 var ENDPOINT="https://script.google.com/macros/s/AKfycby5zRFuJESKQabw1CGG6gY1LX7I3J87vUb3jsng4zW0gh34LOHJuLVlCPQ0_PP3MUBIeA/exec";
