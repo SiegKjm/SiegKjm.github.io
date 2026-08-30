@@ -64,10 +64,17 @@ td.hm{position:relative}
 .hm::before{display:inline-block;animation:memoPulse 1.9s ease-in-out infinite}
 .chip.hm{animation:memoRing 2.4s ease-in-out infinite}
 .hm.on::before{animation:none;opacity:1}
+body.tapped .hm::before,body.tapped .chip.hm{animation:none}
+.backbtn{display:block;text-align:center;text-decoration:none;margin:0 2px 14px;padding:14px;
+  border-radius:6px;background:rgba(242,232,208,.08);border:1px solid rgba(233,206,126,.5);
+  color:var(--gold-lt);font-family:var(--mj);font-weight:800;font-size:14.5px;letter-spacing:1px;
+  box-shadow:0 10px 24px rgba(20,10,8,.35);transition:.2s}
+.backbtn:active{transform:translateY(2px)}
 .tiphint{display:flex;align-items:center;gap:7px;margin:0 2px 14px;padding:10px 13px;border-radius:6px;
   background:rgba(201,162,39,.13);border:1px dashed rgba(201,162,39,.5);color:var(--gold-lt);
   font-size:12.5px;font-weight:700;line-height:1.5}
 .tiphint i{font-style:normal;font-size:15px;animation:memoPulse 1.9s ease-in-out infinite;display:inline-block}
+body.tapped .tiphint{display:none}
 @media (prefers-reduced-motion:reduce){*{animation:none!important}}
 .sec{font-family:var(--caps);font-size:10px;font-weight:600;color:var(--gold);letter-spacing:3px;margin:22px 4px 7px}
 .sec em{font-family:var(--mj);font-style:normal;font-weight:800;font-size:12px;color:var(--gold-lt);letter-spacing:1px}
@@ -93,6 +100,7 @@ footer{text-align:center;margin-top:26px;color:rgba(201,162,39,.5);font-family:v
 <button class="rf" onclick="load()">새로고침</button>
 </div>
 <div class="tiphint"><i>💬</i><span>표시가 있으면 남긴 메모가 있어요 — <b>누르거나 마우스를 올려</b> 보세요</span></div>
+<a class="backbtn" href="/run/">✏️ 투표 화면으로 — 내 응답 수정하기</a>
 <div id="body"></div>
 <footer>ALL CAST · SEPTEMBER RUN</footer>
 </div>
@@ -181,6 +189,7 @@ function showTip(el){
 document.addEventListener("click",function(e){
   var t=e.target.closest?e.target.closest(".hm"):null;
   if(!t){ hideTip(); return; }
+  document.body.classList.add("tapped");
   if(TIPEL===t){ hideTip(); } else { showTip(t); }
 });
 document.addEventListener("mouseover",function(e){
