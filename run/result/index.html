@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>꿈펼 9월 드레스런 출결 현황</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#A8221A">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Nanum+Myeongjo:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#F2E8D0;--paper-lt:#FAF3E2;--paper-dk:#E5D8B8;--red:#A8221A;--red-dk:#7C1611;--red-lt:#C2372B;--gold:#C9A227;--gold-lt:#E8CE7E;--gold-pale:#F3E3B0;--mah:#3A241C;--muted:#7B685C;--caps:"Cinzel",serif;--mj:"Nanum Myeongjo","Apple SD Gothic Neo",serif;}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{background:#2A1A18;background-image:radial-gradient(900px 500px at 50% 0%,rgba(168,34,26,.32),transparent 62%),linear-gradient(175deg,#4A2E22,#33201A 55%,#241511);background-attachment:fixed;color:var(--mah);font-family:var(--mj);font-size:16px;line-height:1.6;min-height:100vh}
+.wrap{max-width:720px;margin:0 auto;padding:18px 13px 60px}
+header{position:relative;text-align:center;padding:26px 18px 22px;margin-bottom:16px;border-radius:100px 100px 12px 12px;background:linear-gradient(165deg,var(--red-lt),var(--red) 42%,var(--red-dk));box-shadow:0 20px 46px rgba(20,10,8,.5),inset 0 0 60px rgba(58,20,15,.4);overflow:hidden}
+header::before{content:"";position:absolute;inset:8px;border:1px solid rgba(233,206,126,.45);border-radius:94px 94px 7px 7px}
+.mus{font-family:var(--caps);font-size:9.5px;letter-spacing:6px;color:rgba(233,206,126,.8)}
+.logo{display:inline-block;font-weight:800;font-size:30px;letter-spacing:4px;color:var(--gold-pale);transform:skewX(-12deg);text-shadow:0 2px 14px rgba(40,12,10,.6)}
+.sub{font-size:13px;color:rgba(255,240,222,.9);margin-top:6px}
+.bar{display:flex;gap:8px;align-items:center;margin:0 2px 14px}
+.stat{flex:1;background:linear-gradient(180deg,var(--paper-lt),var(--paper));border:1px solid var(--paper-dk);border-radius:6px;padding:11px 12px;box-shadow:0 8px 20px rgba(20,10,8,.3)}
+.stat b{font-size:22px;color:var(--red)}
+.stat span{font-size:11.5px;color:var(--muted);display:block;letter-spacing:1px}
+.rf{flex:none;padding:13px 16px;border:1px solid rgba(233,206,126,.55);border-radius:6px;background:linear-gradient(165deg,var(--red-lt),var(--red-dk));color:var(--gold-pale);font-family:var(--mj);font-weight:800;font-size:14px;cursor:pointer}
+.rf:active{transform:translateY(2px)}
+.card{position:relative;background:linear-gradient(180deg,var(--paper-lt),var(--paper));border:1px solid var(--paper-dk);border-radius:6px;padding:15px 15px 13px;margin-bottom:11px;box-shadow:0 10px 24px rgba(20,10,8,.32)}
+.dh{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-bottom:10px}
+.seal{width:28px;height:28px;flex:none;border-radius:50%;background:radial-gradient(circle at 35% 30%,var(--red-lt),var(--red-dk));color:var(--gold-pale);display:flex;align-items:center;justify-content:center;font-family:var(--caps);font-size:12px;font-weight:600}
+.dh .d{font-size:17px;font-weight:800}
+.cnt{margin-left:auto;font-size:12px;font-weight:800;color:var(--muted);font-variant-numeric:tabular-nums}
+.grp{margin-top:9px}
+.glab{font-size:11px;font-weight:800;letter-spacing:1px;margin-bottom:5px}
+.g-y .glab{color:#1F7A4D}.g-m .glab{color:#8A6A0E}.g-n .glab{color:var(--red)}.g-x .glab{color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:5px}
+.chip{font-size:12.5px;font-weight:700;padding:5px 10px;border-radius:999px;border:1px solid;white-space:nowrap}
+.g-y .chip{background:rgba(31,122,77,.1);border-color:rgba(31,122,77,.4);color:#175F3B}
+.g-m .chip{background:rgba(201,162,39,.16);border-color:rgba(201,162,39,.6);color:#7A5D08}
+.g-n .chip{background:rgba(168,34,26,.09);border-color:rgba(168,34,26,.35);color:var(--red-dk)}
+.g-x .chip{background:rgba(58,36,28,.05);border-color:rgba(58,36,28,.2);color:var(--muted)}
+.sec{font-family:var(--caps);font-size:10px;font-weight:600;color:var(--gold);letter-spacing:3px;margin:22px 4px 7px}
+.sec em{font-family:var(--mj);font-style:normal;font-weight:800;font-size:12px;color:var(--gold-lt);letter-spacing:1px}
+.tblwrap{overflow-x:auto;border-radius:6px;box-shadow:0 10px 24px rgba(20,10,8,.32)}
+table{border-collapse:collapse;width:100%;min-width:560px;background:var(--paper-lt)}
+th{background:var(--red);color:var(--gold-pale);padding:9px 7px;font-size:11.5px;font-weight:800;white-space:nowrap}
+td{padding:8px 7px;border-top:1px solid var(--paper-dk);font-size:12.5px;text-align:center;white-space:nowrap}
+td.nm{text-align:left;font-weight:800;position:sticky;left:0;background:var(--paper-lt)}
+td.y{color:#1F7A4D;font-weight:800}td.m{color:#8A6A0E;font-weight:800}td.n{color:var(--red);font-weight:800}td.x{color:#B9AA9C}
+.memo{font-size:12.5px;padding:9px 11px;border-left:3px solid var(--gold);background:rgba(201,162,39,.08);border-radius:3px;margin-top:6px}
+.memo b{color:var(--red)}
+.note{font-size:12px;color:rgba(242,232,208,.6);text-align:center;margin-top:14px;line-height:1.7}
+.err{background:linear-gradient(180deg,var(--paper-lt),var(--paper));border:1px solid var(--gold);border-radius:6px;padding:16px;font-size:13.5px;line-height:1.8}
+.err b{color:var(--red)}
+footer{text-align:center;margin-top:26px;color:rgba(201,162,39,.5);font-family:var(--caps);font-size:9.5px;letter-spacing:4px}
+</style></head><body>
+<div class="wrap">
+<header><div class="mus">MUSICAL</div><div class="logo">꿈을 펼쳐요</div>
+<div class="sub">9월 드레스런 · 출결 현황판</div></header>
+<div class="bar">
+<div class="stat"><b id="s1">–</b><span>제출 / 전체</span></div>
+<div class="stat"><b id="s2">–</b><span>마지막 갱신</span></div>
+<button class="rf" onclick="load()">새로고침</button>
+</div>
+<div id="body"></div>
+<footer>ALL CAST · SEPTEMBER RUN</footer>
+</div>
+<script>
+var ENDPOINT="https://script.google.com/macros/s/AKfycby5zRFuJESKQabw1CGG6gY1LX7I3J87vUb3jsng4zW0gh34LOHJuLVlCPQ0_PP3MUBIeA/exec";
+var ROSTER=[["안나",["홍수빈","최하현"]],["브라운",["이교현","김종무"]],["로렐라이",["김예한","박영진"]],["도로시",["안다혜"]],["존슨&앤디",["최준영","김현정"]],["헨리&잭",["홍윤석"]],["줄리아외",["홍은비"]],["코렐외",["김보람"]],["메리외",["송현주"]],["판사외",["전준범"]],["검사외",["한결"]],["경찰외",["이재윤"]],["바이올렛외",["허해린"]]];
+var ALL=[];ROSTER.forEach(function(r){r[1].forEach(function(n){ALL.push({key:r[0]+" "+n,role:r[0],name:n});});});
+var DATES=[["d0906","9/6 (일)","14:00"],["d0913","9/13 (일)","14:00"],["d0920","9/20 (일)","14:00"],["d0927","9/27 (일)","14:00"],["d0928","9/28 (월)","19:00"]];
+var RN=["I","II","III","IV","V"];
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+function kind(v){if(!v)return "x";if(v.indexOf("참석")===0)return "y";if(v.indexOf("늦참")===0)return "m";if(v.indexOf("불참")===0)return "n";return "x";}
+function short(v){if(!v)return "–";var p=v.split(" ");if(p[0]==="늦참"&&p[1])return "늦참 "+p[1];return p[0];}
+async function load(){
+  var body=document.getElementById("body");
+  body.innerHTML="<div class=\"err\">불러오는 중…</div>";
+  var data=null;
+  try{ var r=await fetch(ENDPOINT+"?mode=json&t="+Date.now()); var t=await r.text(); data=JSON.parse(t); }
+  catch(e){
+    body.innerHTML="<div class=\"err\"><b>결과를 불러오지 못했습니다.</b><br><br>구글 Apps Script를 최신 버전으로 다시 배포해 주세요.<br>[배포] → [배포 관리] → 연필 → 버전 <b>새 버전</b> → [배포]<br><br>액세스 권한이 <b>모든 사용자</b>인지도 확인해 주세요.</div>";
+    return; }
+  render(data.rows||[]);
+}
+function render(rows){
+  var map={}; rows.forEach(function(r){ map[String(r.name).trim()]=r; });
+  var done=ALL.filter(function(p){return map[p.key];}).length;
+  document.getElementById("s1").textContent=done+" / "+ALL.length;
+  var now=new Date();
+  document.getElementById("s2").textContent=(now.getHours()<10?"0":"")+now.getHours()+":"+(now.getMinutes()<10?"0":"")+now.getMinutes();
+  var h="";
+  DATES.forEach(function(d,i){
+    var b={y:[],m:[],n:[],x:[]};
+    ALL.forEach(function(p){ var row=map[p.key]; var v=row?String(row[d[0]]||""):""; var k=kind(v);
+      var lab=p.name; if(k==="m"){var pp=v.split(" "); if(pp[1]) lab=p.name+" "+pp[1];}
+      b[k].push(lab); });
+    h+="<div class=\"card\"><div class=\"dh\"><span class=\"seal\">"+RN[i]+"</span><span class=\"d\">"+d[1]+"</span>";
+    h+="<span class=\"cnt\">참석 "+b.y.length+" · 늦참 "+b.m.length+" · 불참 "+b.n.length+" · 미응답 "+b.x.length+"</span></div>";
+    [["y","참석"],["m","늦참"],["n","불참"],["x","미응답"]].forEach(function(g){
+      if(!b[g[0]].length) return;
+      h+="<div class=\"grp g-"+g[0]+"\"><div class=\"glab\">"+g[1]+" "+b[g[0]].length+"명</div><div class=\"chips\">";
+      b[g[0]].forEach(function(n){ h+="<span class=\"chip\">"+esc(n)+"</span>"; });
+      h+="</div></div>"; });
+    h+="</div>"; });
+  h+="<div class=\"sec\">TABLE · <em>전체 표</em></div><div class=\"tblwrap\"><table><tr><th>배역 · 이름</th>";
+  DATES.forEach(function(d){ h+="<th>"+d[1]+"</th>"; });
+  h+="</tr>";
+  ALL.forEach(function(p){
+    var row=map[p.key];
+    h+="<tr><td class=\"nm\">"+esc(p.role)+" · "+esc(p.name)+"</td>";
+    DATES.forEach(function(d){ var v=row?String(row[d[0]]||""):""; h+="<td class=\""+kind(v)+"\">"+esc(short(v))+"</td>"; });
+    h+="</tr>"; });
+  h+="</table></div>";
+  var memos=ALL.filter(function(p){ var r=map[p.key]; return r && String(r.memo||"").trim(); });
+  if(memos.length){ h+="<div class=\"sec\">NOTES · <em>전달 사항</em></div><div class=\"card\">";
+    memos.forEach(function(p){ h+="<div class=\"memo\"><b>"+esc(p.name)+"</b> · "+esc(map[p.key].memo)+"</div>"; });
+    h+="</div>"; }
+  var missing=ALL.filter(function(p){ return !map[p.key]; });
+  h+="<div class=\"sec\">PENDING · <em>미제출</em></div><div class=\"card\">";
+  if(!missing.length) h+="<div style=\"font-weight:800;color:#1F7A4D\">전원 제출 완료!</div>";
+  else { h+="<div class=\"grp g-x\"><div class=\"chips\">";
+    missing.forEach(function(p){ h+="<span class=\"chip\">"+esc(p.name)+"</span>"; });
+    h+="</div></div>"; }
+  h+="</div>";
+  h+="<p class=\"note\">이 페이지는 팀 내부용입니다.<br>수치는 새로고침을 눌러야 갱신됩니다.</p>";
+  document.getElementById("body").innerHTML=h;
+}
+load();
+</script></body></html>
