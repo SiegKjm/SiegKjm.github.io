@@ -31,6 +31,17 @@ header::before{content:"";position:absolute;inset:8px;border:1px solid rgba(233,
 .seal{width:28px;height:28px;flex:none;border-radius:50%;background:radial-gradient(circle at 35% 30%,var(--red-lt),var(--red-dk));color:var(--gold-pale);display:flex;align-items:center;justify-content:center;font-family:var(--caps);font-size:12px;font-weight:600}
 .dh .d{font-size:17px;font-weight:800}
 .cnt{margin-left:auto;font-size:12px;font-weight:800;color:var(--muted);font-variant-numeric:tabular-nums}
+.teams{display:flex;gap:9px;margin:2px 0 13px}
+.team{flex:1;min-width:0;background:rgba(58,36,28,.05);border:1px solid rgba(58,36,28,.13);border-radius:5px;padding:9px 10px}
+.trow{display:flex;align-items:baseline;gap:6px;margin-bottom:7px}
+.tn{font-size:11.5px;font-weight:800;letter-spacing:1.5px;color:var(--red)}
+.tpc{font-size:11px;color:var(--muted);font-weight:700}
+.tv{margin-left:auto;font-size:13px;font-weight:800;font-variant-numeric:tabular-nums;color:var(--mah)}
+.tbar{height:7px;border-radius:99px;background:rgba(58,36,28,.13);overflow:hidden;display:flex}
+.tbar i{display:block;height:100%;transition:width .5s ease}
+.tbar .by{background:linear-gradient(90deg,#2FA672,#1F7A4D)}
+.tbar .bm{background:linear-gradient(90deg,#E3C55C,#C9A227)}
+.tsub{margin-top:6px;font-size:10.5px;color:var(--muted);font-weight:700;letter-spacing:-.2px}
 .grp{margin-top:9px}
 .glab{font-size:11px;font-weight:800;letter-spacing:1px;margin-bottom:5px}
 .g-y .glab{color:#1F7A4D}.g-m .glab{color:#8A6A0E}.g-n .glab{color:var(--red)}.g-x .glab{color:var(--muted)}
@@ -100,8 +111,8 @@ footer{text-align:center;margin-top:26px;color:rgba(201,162,39,.5);font-family:v
 <button class="rf" onclick="load()">새로고침</button>
 </div>
 <div class="tiphint"><i>💬</i><span>표시가 있으면 남긴 메모가 있어요 — <b>누르거나 마우스를 올려</b> 보세요</span></div>
+<a class="backbtn" href="/run/">✏️ 투표 화면으로 — 내 응답 수정하기</a>
 <div id="body"></div>
-<a class="backbtn" href="/run/" style="margin-top:22px">✏️ 투표 화면으로 — 내 응답 수정하기</a>
 <footer>ALL CAST · SEPTEMBER RUN</footer>
 </div>
 <div id="tip" class="tip"></div>
@@ -124,6 +135,17 @@ async function load(){
     return; }
   render(data.rows||[]);
 }
+var TEAM_A=["안나 홍수빈","브라운 이교현","로렐라이 김예한","존슨&앤디 최준영","도로시 안다혜","헨리&잭 홍윤석"];
+var TEAM_B=["안나 최하현","브라운 김종무","로렐라이 박영진","존슨&앤디 김현정","도로시 안다혜","헨리&잭 홍윤석"];
+function tstat(keys,dk,map){var o={y:0,m:0,n:0,x:0};keys.forEach(function(k){var r=map[k];var v=r?String(r[dk]||""):"";o[kind(v)]++;});return o;}
+function tcard(nm,keys,dk,map){
+  var o=tstat(keys,dk,map), t=keys.length, come=o.y+o.m, pc=Math.round(come/t*100);
+  return "<div class=\"team\"><div class=\"trow\"><span class=\"tn\">"+nm+"</span>"
+   +"<span class=\"tpc\">"+pc+"%</span><span class=\"tv\">"+come+" / "+t+"</span></div>"
+   +"<div class=\"tbar\"><i class=\"by\" style=\"width:"+(o.y/t*100)+"%\"></i><i class=\"bm\" style=\"width:"+(o.m/t*100)+"%\"></i></div>"
+   +"<div class=\"tsub\">정시 "+o.y+" · 늦참 "+o.m+" · 불참 "+o.n+" · 미응답 "+o.x+"</div></div>";
+}
+function teamBlock(dk,map){ return "<div class=\"teams\">"+tcard("A팀",TEAM_A,dk,map)+tcard("B팀",TEAM_B,dk,map)+"</div>"; }
 function render(rows){
   var map={}; rows.forEach(function(r){ map[String(r.name).trim()]=r; });
   var done=ALL.filter(function(p){return map[p.key];}).length;
@@ -138,6 +160,7 @@ function render(rows){
       b[k].push({lab:lab, memo:row?String(row.memo||"").trim():""}); });
     h+="<div class=\"card\"><div class=\"dh\"><span class=\"seal\">"+RN[i]+"</span><span class=\"d\">"+d[1]+"</span>";
     h+="<span class=\"cnt\">참석 "+b.y.length+" · 늦참 "+b.m.length+" · 불참 "+b.n.length+" · 미응답 "+b.x.length+"</span></div>";
+    h+=teamBlock(d[0],map);
     [["y","참석"],["m","늦참"],["n","불참"],["x","미응답"]].forEach(function(g){
       if(!b[g[0]].length) return;
       h+="<div class=\"grp g-"+g[0]+"\"><div class=\"glab\">"+g[1]+" "+b[g[0]].length+"명</div><div class=\"chips\">";
@@ -165,7 +188,7 @@ function render(rows){
     missing.forEach(function(p){ h+="<span class=\"chip\">"+esc(p.name)+"</span>"; });
     h+="</div></div>"; }
   h+="</div>";
-  h+="<p class=\"note\">이 페이지는 팀 내부용입니다.<br>수치는 새로고침을 눌러야 갱신됩니다.</p>";
+  h+="<p class=\"note\">팀별 막대는 <b>메인캐 6인</b> 기준 출석률입니다 (초록=정시, 금색=늦참).<br>도로시·헨리&amp;잭은 원캐라 A·B팀 모두에 포함됩니다.<br>이 페이지는 팀 내부용입니다.<br>수치는 새로고침을 눌러야 갱신됩니다.</p>";
   document.getElementById("body").innerHTML=h;
 }
 var TIP=null, TIPEL=null;
