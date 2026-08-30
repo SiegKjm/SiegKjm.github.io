@@ -49,6 +49,15 @@ header::before{content:"";position:absolute;inset:8px;border:1px solid rgba(233,
   box-shadow:0 12px 28px rgba(0,0,0,.5);opacity:0;pointer-events:none;transition:.18s;z-index:60}
 .hm:hover::after,.hm.on::after{opacity:1;transform:translateX(-50%) translateY(0)}
 td.hm{position:relative}
+.hm::after{content:none!important}
+.tip{position:fixed;z-index:999;background:#2E1B14;color:var(--gold-pale);
+  border:1px solid rgba(233,206,126,.55);border-radius:6px;padding:10px 13px;
+  font-family:var(--mj);font-size:12.5px;font-weight:600;line-height:1.6;
+  max-width:min(280px,88vw);box-shadow:0 14px 32px rgba(0,0,0,.55);
+  opacity:0;pointer-events:none;transition:opacity .16s ease,transform .16s ease;
+  transform:translateY(5px);left:0;top:0;white-space:normal;text-align:left}
+.tip.on{opacity:1;transform:translateY(0)}
+.tip b{color:#fff;display:block;margin-bottom:3px;font-size:12px}
 @keyframes memoPulse{0%,100%{transform:scale(1);opacity:.72}50%{transform:scale(1.32);opacity:1}}
 @keyframes memoRing{0%,100%{box-shadow:inset 0 -2px 0 rgba(201,162,39,.5),0 0 0 0 rgba(201,162,39,.55)}
   55%{box-shadow:inset 0 -2px 0 rgba(201,162,39,.95),0 0 0 6px rgba(201,162,39,0)}}
@@ -89,6 +98,7 @@ footer{text-align:center;margin-top:26px;color:rgba(201,162,39,.5);font-family:v
 <div id="body"></div>
 <footer>ALL CAST · SEPTEMBER RUN</footer>
 </div>
+<div id="tip" class="tip"></div>
 <script>
 var ENDPOINT="https://script.google.com/macros/s/AKfycby5zRFuJESKQabw1CGG6gY1LX7I3J87vUb3jsng4zW0gh34LOHJuLVlCPQ0_PP3MUBIeA/exec";
 var ROSTER=[["안나",["홍수빈","최하현"]],["브라운",["이교현","김종무"]],["로렐라이",["김예한","박영진"]],["도로시",["안다혜"]],["존슨&앤디",["최준영","김현정"]],["헨리&잭",["홍윤석"]],["줄리아외",["홍은비"]],["코렐외",["김보람"]],["메리외",["송현주"]],["판사외",["전준범"]],["검사외",["한결"]],["경찰외",["이재윤"]],["바이올렛외",["허해린"]]];
@@ -125,7 +135,7 @@ function render(rows){
     [["y","참석"],["m","늦참"],["n","불참"],["x","미응답"]].forEach(function(g){
       if(!b[g[0]].length) return;
       h+="<div class=\"grp g-"+g[0]+"\"><div class=\"glab\">"+g[1]+" "+b[g[0]].length+"명</div><div class=\"chips\">";
-      b[g[0]].forEach(function(o){ var mm=(g[0]==="m"||g[0]==="n")&&o.memo; h+="<span class=\"chip"+(mm?" hm":"")+"\""+(mm?" data-memo=\""+esc(o.memo)+"\" title=\""+esc(o.memo)+"\"":"")+">"+esc(o.lab)+"</span>"; });
+      b[g[0]].forEach(function(o){ var mm=(g[0]==="m"||g[0]==="n")&&o.memo; h+="<span class=\"chip"+(mm?" hm":"")+"\""+(mm?" data-memo=\""+esc(o.memo)+"\" data-who=\""+esc(o.lab)+"\" title=\""+esc(o.memo)+"\"":"")+">"+esc(o.lab)+"</span>"; });
       h+="</div></div>"; });
     h+="</div>"; });
   h+="<div class=\"sec\">TABLE · <em>전체 표</em></div><div class=\"tblwrap\"><table><tr><th>배역 · 이름</th>";
@@ -135,7 +145,7 @@ function render(rows){
     var row=map[p.key];
     h+="<tr><td class=\"nm\">"+esc(p.role)+" · "+esc(p.name)+"</td>";
     DATES.forEach(function(d){ var v=row?String(row[d[0]]||""):""; var k=kind(v); var mo=((k==="m"||k==="n")&&row)?String(row.memo||"").trim():"";
-      h+="<td class=\""+k+(mo?" hm":"")+"\""+(mo?" data-memo=\""+esc(mo)+"\" title=\""+esc(mo)+"\"":"")+">"+esc(short(v))+"</td>"; });
+      h+="<td class=\""+k+(mo?" hm":"")+"\""+(mo?" data-memo=\""+esc(mo)+"\" data-who=\""+esc(p.name)+"\" title=\""+esc(mo)+"\"":"")+">"+esc(short(v))+"</td>"; });
     h+="</tr>"; });
   h+="</table></div>";
   var memos=ALL.filter(function(p){ var r=map[p.key]; return r && String(r.memo||"").trim(); });
@@ -152,8 +162,38 @@ function render(rows){
   h+="<p class=\"note\">이 페이지는 팀 내부용입니다.<br>수치는 새로고침을 눌러야 갱신됩니다.</p>";
   document.getElementById("body").innerHTML=h;
 }
-document.addEventListener("click",function(e){var t=e.target.closest?e.target.closest(".hm"):null;
-  var on=document.querySelectorAll(".hm.on"); for(var i=0;i<on.length;i++){ if(on[i]!==t) on[i].classList.remove("on"); }
-  if(t){ t.classList.toggle("on"); document.body.classList.add("tapped"); }});
+var TIP=null, TIPEL=null;
+function hideTip(){ if(TIP){TIP.classList.remove("on");} if(TIPEL){TIPEL.classList.remove("on");} TIPEL=null; }
+function showTip(el){
+  TIP=TIP||document.getElementById("tip");
+  var m=el.getAttribute("data-memo")||""; if(!m) return;
+  var nm=el.getAttribute("data-who")||"";
+  TIP.innerHTML=(nm?"<b>"+nm+"</b>":"")+m.replace(/&/g,"&amp;").replace(/</g,"&lt;");
+  TIP.classList.add("on");
+  var r=el.getBoundingClientRect(), t=TIP.getBoundingClientRect(), M=10;
+  var left=r.left+r.width/2-t.width/2;
+  if(left<M) left=M;
+  if(left+t.width>window.innerWidth-M) left=window.innerWidth-M-t.width;
+  var top=r.top-t.height-10;
+  if(top<M) top=r.bottom+10;
+  TIP.style.left=Math.max(M,left)+"px"; TIP.style.top=top+"px";
+  if(TIPEL&&TIPEL!==el) TIPEL.classList.remove("on");
+  el.classList.add("on"); TIPEL=el;
+}
+document.addEventListener("click",function(e){
+  var t=e.target.closest?e.target.closest(".hm"):null;
+  if(!t){ hideTip(); return; }
+  document.body.classList.add("tapped");
+  if(TIPEL===t){ hideTip(); } else { showTip(t); }
+});
+document.addEventListener("mouseover",function(e){
+  var t=e.target.closest?e.target.closest(".hm"):null; if(t) showTip(t);
+});
+document.addEventListener("mouseout",function(e){
+  var t=e.target.closest?e.target.closest(".hm"):null;
+  if(t&&!("ontouchstart" in window)) hideTip();
+});
+window.addEventListener("scroll",hideTip,{passive:true});
+window.addEventListener("resize",hideTip);
 load();
 </script></body></html>
