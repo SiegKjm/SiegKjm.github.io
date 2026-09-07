@@ -79,6 +79,8 @@
     padding: 44px 20px 60px;
   }
 
+  body.locked { overflow: hidden; }
+
   .sheet {
     width: 100%;
     max-width: 480px;
@@ -119,15 +121,79 @@
   }
 
   .poster {
+    position: relative;
+    display: block;
     width: 100%;
+    padding: 0;
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 18px 40px var(--shadow);
     border: 6px solid var(--surface);
+    background: var(--surface);
     line-height: 0;
+    cursor: zoom-in;
+    transition: transform 0.15s ease;
   }
 
+  .poster:hover { transform: translateY(-2px); }
+  .poster:focus-visible { outline: 3px solid var(--sun); outline-offset: 3px; }
   .poster img { width: 100%; display: block; }
+
+  .poster .zoom {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    font-family: "Poppins", sans-serif;
+    font-size: 11.5px;
+    font-weight: 600;
+    line-height: 1;
+    color: #ffffff;
+    background: rgba(11, 46, 66, 0.62);
+    padding: 7px 11px;
+    border-radius: 999px;
+    backdrop-filter: blur(4px);
+  }
+
+  .lightbox {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background: rgba(4, 18, 26, 0.88);
+    cursor: zoom-out;
+    animation: fade 0.18s ease;
+  }
+
+  .lightbox[hidden] { display: none !important; }
+  .lightbox img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 10px;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+  }
+
+  .lightbox .close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 40px;
+    height: 40px;
+    border: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.16);
+    color: #ffffff;
+    font-size: 22px;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  .lightbox .close:hover { background: rgba(255, 255, 255, 0.28); }
+  .lightbox .close:focus-visible { outline: 3px solid var(--sun); outline-offset: 2px; }
+
+  @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
 
   .card {
     width: 100%;
@@ -262,7 +328,8 @@
   .hint a { color: var(--muted); }
 
   @media (prefers-reduced-motion: reduce) {
-    .cta { transition: none; }
+    .cta, .poster { transition: none; }
+    .lightbox { animation: none; }
   }
 </style>
 </head>
@@ -273,9 +340,10 @@
   <h1>FOLLOW YOUR&nbsp;DREAMS</h1>
   <div class="tagline">뮤지컬 "꿈을 펼쳐요"</div>
 
-  <div class="poster">
-    <img src="og.jpg" alt="뮤지컬 꿈을 펼쳐요 FOLLOW YOUR DREAMS 공연 포스터 — 출연진 단체 사진 콜라주">
-  </div>
+  <button class="poster" id="posterBtn" type="button" aria-label="포스터 크게 보기">
+    <img id="posterImg" src="poster.jpg" onerror="this.onerror=null;this.src='og.jpg';" alt="뮤지컬 꿈을 펼쳐요 FOLLOW YOUR DREAMS 공연 포스터 — 출연진 단체 사진 콜라주">
+    <span class="zoom">탭하면 크게 보기</span>
+  </button>
 
   <div class="card">
     <p class="desc">
@@ -319,6 +387,41 @@
   <p class="hint">버튼을 누르면 <b>관람 회차</b>와 <b>지인 배우(김종무)</b>가 미리 선택된 예매 폼이 열립니다.<br>
   <a href="https://docs.google.com/forms/d/e/1FAIpQLSdFzvJbqcD-cZmx7WNVzxzOohdP6K2yIBSxER5rJ5E4v9P6Eg/viewform?usp=pp_url&amp;entry.1506887490=2%ED%9A%8C%EC%B0%A8%3A%20%5BB%ED%8C%80%5D%2010%2F3%2017%3A00%20%28%EA%B9%80%EB%B3%B4%EB%9E%8C%20%EA%B9%80%EC%A2%85%EB%AC%B4%20%EA%B9%80%ED%98%84%EC%A0%95%20%EB%B0%95%EC%98%81%EC%A7%84%20%EC%86%A1%ED%98%84%EC%A3%BC%20%EC%95%88%EB%8B%A4%ED%98%9C%20%EC%9D%B4%EC%9E%AC%EC%9C%A4%20%EC%A0%84%EC%A4%80%EB%B2%94%20%EC%B5%9C%ED%95%98%ED%98%84%20%ED%95%9C%EA%B2%B0%20%ED%97%88%ED%95%B4%EB%A6%B0%20%ED%99%8D%EC%9C%A4%EC%84%9D%20%ED%99%8D%EC%9D%80%EB%B9%84%29&amp;entry.1506887490=3%ED%9A%8C%EC%B0%A8%3A%20%5BB%ED%8C%80%5D%2010%2F4%2012%3A30%20%28%EA%B9%80%EB%B3%B4%EB%9E%8C%20%EA%B9%80%EC%A2%85%EB%AC%B4%20%EA%B9%80%ED%98%84%EC%A0%95%20%EB%B0%95%EC%98%81%EC%A7%84%20%EC%86%A1%ED%98%84%EC%A3%BC%20%EC%95%88%EB%8B%A4%ED%98%9C%20%EC%9D%B4%EC%9E%AC%EC%9C%A4%20%EC%A0%84%EC%A4%80%EB%B2%94%20%EC%B5%9C%ED%95%98%ED%98%84%20%ED%95%9C%EA%B2%B0%20%ED%97%88%ED%95%B4%EB%A6%B0%20%ED%99%8D%EC%9C%A4%EC%84%9D%20%ED%99%8D%EC%9D%80%EB%B9%84%29&amp;entry.2005620554=%EA%B9%80%EC%A2%85%EB%AC%B4" target="_blank" rel="noopener">두 회차 모두 선택해서 열기</a></p>
 </div>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="공연 포스터" hidden>
+  <button class="close" id="lightboxClose" type="button" aria-label="닫기">&times;</button>
+  <img id="lightboxImg" src="" alt="뮤지컬 꿈을 펼쳐요 공연 포스터 확대 이미지">
+</div>
+
+<script>
+(function () {
+  var btn = document.getElementById('posterBtn');
+  var box = document.getElementById('lightbox');
+  var boxImg = document.getElementById('lightboxImg');
+  var closeBtn = document.getElementById('lightboxClose');
+  var srcImg = document.getElementById('posterImg');
+
+  function open() {
+    boxImg.src = srcImg.currentSrc || srcImg.src;
+    box.hidden = false;
+    document.body.classList.add('locked');
+    closeBtn.focus();
+  }
+
+  function close() {
+    box.hidden = true;
+    document.body.classList.remove('locked');
+    btn.focus();
+  }
+
+  btn.addEventListener('click', open);
+  closeBtn.addEventListener('click', function (e) { e.stopPropagation(); close(); });
+  box.addEventListener('click', close);
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !box.hidden) close();
+  });
+})();
+</script>
 
 </body>
 </html>
