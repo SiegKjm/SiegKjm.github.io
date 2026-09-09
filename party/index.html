@@ -332,6 +332,30 @@
     outline-offset: 3px;
   }
 
+  .share {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    border: 0;
+    cursor: pointer;
+    font-family: "Poppins", "Pretendard", "Apple SD Gothic Neo", sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    color: #191600;
+    background: #FEE500;
+    padding: 14px 20px;
+    border-radius: 14px;
+    box-shadow: 0 8px 18px rgba(11, 46, 66, 0.18);
+    transition: transform 0.15s ease;
+  }
+
+  .share:hover { transform: translateY(-2px); }
+  .share:active { transform: translateY(0); }
+  .share:focus-visible { outline: 3px solid var(--sun); outline-offset: 3px; }
+  .share[hidden] { display: none !important; }
+
   .hint {
     font-size: 12.5px;
     line-height: 1.65;
@@ -403,6 +427,7 @@
   </div>
   <p class="hint">폼이 열리면 <b>관람 회차</b>와 <b>지인 배우(김종무)</b>가 미리 선택되어 있습니다.<br>
   선택된 항목이 없다면 <b>2회차(10/3 17:00)</b> 또는 <b>3회차(10/4 12:30)</b>와 <b>김종무</b>를 직접 선택해 주세요.</p>
+  <button class="share" id="shareBtn" type="button" hidden>카카오톡으로 공유하기</button>
 </div>
 
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="공연 포스터" hidden>
@@ -440,5 +465,33 @@
 })();
 </script>
 
+
+<script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.2/kakao.min.js" integrity="sha384-TiCUE00h649CAMonG018J2ujOgDKW/kVWlChEuu4jK2vxfAAD0eZxzCKakxg55G4" crossorigin="anonymous"></script>
+<script>
+(function () {
+  var btn = document.getElementById("shareBtn");
+  if (!window.Kakao || !btn) return;
+  try {
+    Kakao.init("598f0c18c113d1275fd1431280e9ad97");
+  } catch (e) { return; }
+  var link = { mobileWebUrl: "https://siegkjm.github.io/party/", webUrl: "https://siegkjm.github.io/party/" };
+  btn.hidden = false;
+  btn.addEventListener("click", function () {
+    Kakao.Share.sendDefault({
+      objectType: "feed",
+      content: {
+        title: "뮤지컬 「꿈을 펼쳐요」 · 김종무 초대",
+        description: "10/3(토) 17:00 · 10/4(일) 12:30 공연에 초대합니다.",
+        imageUrl: "https://siegkjm.github.io/party/poster.jpg",
+        link: link
+      },
+      buttons: [
+        { title: "초대장 보기", link: link },
+        { title: "예매하기", link: { mobileWebUrl: "https://docs.google.com/forms/d/e/1FAIpQLSdFzvJbqcD-cZmx7WNVzxzOohdP6K2yIBSxER5rJ5E4v9P6Eg/viewform", webUrl: "https://docs.google.com/forms/d/e/1FAIpQLSdFzvJbqcD-cZmx7WNVzxzOohdP6K2yIBSxER5rJ5E4v9P6Eg/viewform" } }
+      ]
+    });
+  });
+})();
+</script>
 </body>
 </html>
